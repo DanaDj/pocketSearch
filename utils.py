@@ -751,9 +751,9 @@ def rosetta_prep(outdir: str, indir: str, filt: float,
 
             array = [ int(x) if x[-1].isdigit() else int(x[:-1]) for x in array ]
             with open(f'{outdir}rosetta/{a}_pock{b}.pos','w') as outfile:
-                for line in sorted(array):
-                    outline = ' '.join([str(x) for x in array])
-                    outfile.write(outline)
+                #for line in sorted(array):
+                outline = ' '.join([str(x) for x in array])
+                outfile.write(outline)
 
 
 def restart_run(outputdir: str, pdbdir: str) -> List[str]:
@@ -961,7 +961,7 @@ def pocket_search(i: int, structure: str, outputdir: str, pdbdir: str,
     rosetta_prep(outputdir, pdbdir, min_intersect, min_hits, structure)
 
     # move scored structures
-    #move_scored_structures(outputdir, pdbdir)
+    move_scored_structures(outputdir, pdbdir)
     
     # update checkpoint file
     update_checkpoint(outputdir, structure)
